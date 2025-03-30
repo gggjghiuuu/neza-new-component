@@ -10,36 +10,31 @@ const careerHelpDiv = document.querySelector('.career__help');
 
 const careerDivs = [careerOftenDiv, careerEnterITDiv, careerSkillDiv, careerHelpDiv];
 
-async function hideAllCareerDivs(excludeDiv) {
-  await Promise.all(careerDivs.map(div => {
-    return new Promise(resolve => {
-      if (div !== excludeDiv) {
-        div.style.display = 'none';
-      }
-      resolve();
-    });
-  }));
+function hideAllCareerDivs() {
+  careerDivs.forEach(div => {
+    div.style.display = 'none';
+  });
 }
 
-async function showCareerDiv(div) {
-  await hideAllCareerDivs(div);
+function showCareerDiv(div) {
+  hideAllCareerDivs();
   div.style.display = 'flex';
 }
 
-oftenPickButton.addEventListener('click', async () => {
-  await showCareerDiv(careerOftenDiv);
+oftenPickButton.addEventListener('click', () => {
+  showCareerDiv(careerOftenDiv);
 });
 
-enterITButton.addEventListener('click', async () => {
-  await showCareerDiv(careerEnterITDiv);
+enterITButton.addEventListener('click', () => {
+  showCareerDiv(careerEnterITDiv);
 });
 
-getSkillButton.addEventListener('click', async () => {
-  await showCareerDiv(careerSkillDiv);
+getSkillButton.addEventListener('click', () => {
+  showCareerDiv(careerSkillDiv);
 });
 
-helpChooseButton.addEventListener('click', async () => {
-  await showCareerDiv(careerHelpDiv);
+helpChooseButton.addEventListener('click', () => {
+  showCareerDiv(careerHelpDiv);
 });
 
 // Call the hideAllCareerDivs function initially to hide all divs except the first one
